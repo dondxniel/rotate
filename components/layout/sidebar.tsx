@@ -1,19 +1,27 @@
 import Badge from '@/components/ui/badge';
 import { Button, HStack, VStack } from '@chakra-ui/react';
-import { List } from '@phosphor-icons/react';
+import { List, X } from '@phosphor-icons/react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Sidebar() {
 	const [showNav, setShowNav] = useState(false);
 	const toggleNav = () => setShowNav((p) => !p);
+
+	useEffect(() => {
+		document.body.classList[showNav ? 'add' : 'remove']('no-scroll');
+		return () => document.body.classList.remove('no-scroll');
+	}, [showNav]);
+
 	return (
-		<div className='flex flex-row lg:flex-col gap-6 items-stretch sidebar relative'>
-			<HStack className='bg-custom-radial p-[24px] w-full md:rounded-[10px] flex-1 lg:flex-none overflow-visible'>
+		<div
+			className={`flex flex-row lg:flex-col gap-6 items-stretch sidebar relative `}
+		>
+			<HStack className='lg:h-[137px] bg-custom-radial p-[24px] w-full md:rounded-[10px] flex-1 lg:flex-none overflow-visible'>
 				<VStack
 					justifyContent={'end'}
 					alignItems={'start'}
-					className='lg:h-[137px] flex-1 !gap-0 md:!gap-[auto] text-white h-full'
+					className='flex-1 !gap-0 md:!gap-[auto] text-white h-full'
 				>
 					<div className='font-bold text-[15px] md:text-xl'>
 						Frontend Mentor
@@ -26,7 +34,11 @@ export default function Sidebar() {
 					onClick={toggleNav}
 					className='md:hidden !p-0 min-w-max h-auto'
 				>
-					<List color='white' className='text-xl' />
+					{showNav ? (
+						<X color='white' className='text-xl' />
+					) : (
+						<List color='white' className='text-xl' />
+					)}
 				</Button>
 			</HStack>
 
@@ -34,6 +46,7 @@ export default function Sidebar() {
 				className={`absolute ${
 					showNav ? 'left-0' : 'left-full'
 				} top-full right-0 bottom-0 z-10 h-screen md:h-auto md:static flex-[2] md:flex-none bg-black/20 md:bg-transparent`}
+				onClick={toggleNav}
 			>
 				<div className='bg-[#F7F8FD] md:bg-transparent h-screen md:h-auto md:static flex flex-col md:flex-row lg:flex-col gap-6 items-stretch p-6 md:p-0 w-3/4 ml-auto md:w-auto md:ml-0'>
 					<HStack className='flex-none md:flex-1 flex lg:flex-none bg-white rounded-[10px] p-[24px]'>

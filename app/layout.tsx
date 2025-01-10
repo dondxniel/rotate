@@ -23,7 +23,10 @@ export default function RootLayout({
 		<html lang='en' suppressHydrationWarning>
 			<body className={`${jost.variable} antialiased light`}>
 				<Provider>
-					<div className='flex flex-col lg:flex-row md:gap-[30px] page-layout'>
+					<div
+						id='pageLayout'
+						className='flex flex-col lg:flex-row md:gap-[30px] page-layout'
+					>
 						{children}
 					</div>
 				</Provider>

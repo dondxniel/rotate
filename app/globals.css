@@ -20,3 +20,7 @@ body {
 a{
  @apply text-sm underline text-[#4661E6]
 }
+
+.no-scroll{
+  @apply overflow-hidden md:overflow-scroll
+}

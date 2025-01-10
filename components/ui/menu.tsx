@@ -16,7 +16,10 @@ interface MenuContentProps extends ChakraMenu.ContentProps {
 }
 
 interface IMenuProps extends MenuRootProps {
-	// children?: React.ReactNode;
+	options?: {
+		label: string;
+		value: string | number;
+	}[];
 }
 
 export const MenuContent = React.forwardRef<HTMLDivElement, MenuContentProps>(
@@ -119,7 +122,7 @@ export const MenuItemText = ChakraMenu.ItemText;
 export const MenuItemCommand = ChakraMenu.ItemCommand;
 export const MenuTrigger = ChakraMenu.Trigger;
 
-export default function Menu({ children, ...props }: IMenuProps) {
+export default function Menu({ children, options = [], ...props }: IMenuProps) {
 	return (
 		<MenuRoot {...props}>
 			<MenuTrigger asChild>
@@ -128,30 +131,19 @@ export default function Menu({ children, ...props }: IMenuProps) {
 				</Button>
 			</MenuTrigger>
 			<MenuContent width={'200px'}>
-				<MenuItem
-					className='border-b border-b-[#3A4374]/15 py-3 hover:bg-inherit cursor-pointer hover:text-[#AD1FEA]'
-					value='most-upvotes'
-				>
-					Most Upvotes
-				</MenuItem>
-				<MenuItem
-					className='border-b border-b-[#3A4374]/15 py-3 hover:bg-inherit cursor-pointer hover:text-[#AD1FEA]'
-					value='least-upvotes'
-				>
-					Least Upvotes
-				</MenuItem>
-				<MenuItem
-					className='border-b border-b-[#3A4374]/15 py-3 hover:bg-inherit cursor-pointer hover:text-[#AD1FEA]'
-					value='most-comments'
-				>
-					Most Comments
-				</MenuItem>
-				<MenuItem
-					className='py-3 hover:bg-inherit cursor-pointer hover:text-[#AD1FEA]'
-					value='least-comments'
-				>
-					Least Comments
-				</MenuItem>
+				{options?.map((option, i) => (
+					<MenuItem
+						key={option.value}
+						className={`${
+							i !== options.length - 1
+								? 'border-b border-b-[#3A4374]/15'
+								: ''
+						} py-3 hover:bg-inherit cursor-pointer hover:text-[#AD1FEA]`}
+						value={`${option.value}`}
+					>
+						{option.label}
+					</MenuItem>
+				))}
 			</MenuContent>
 		</MenuRoot>
 	);

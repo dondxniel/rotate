@@ -21,10 +21,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 			<ChakraButton
 				background={'#AD1FEA'}
 				color='white'
-				px={'25px'}
+				px={{ base: '15px', md: '25px' }}
 				fontWeight={'bold'}
 				fontSize={'sm'}
-				h={'44px'}
+				h={{ base: '35px', md: '44px' }}
 				borderRadius={'10px'}
 				disabled={loading || disabled}
 				ref={ref}

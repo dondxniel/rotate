@@ -4,9 +4,9 @@ import Main from '@/components/layout/main';
 import PageHeader from '@/components/layout/page-header';
 import Sidebar from '@/components/layout/sidebar';
 import { Button } from '@/components/ui/button';
-import Menu from '@/components/ui/menu';
-import { HStack, VStack } from '@chakra-ui/react';
-import { CaretDown, Plus } from '@phosphor-icons/react';
+import FilterMenu from '@/components/utilities/filter-menu';
+import { VStack } from '@chakra-ui/react';
+import { Plus } from '@phosphor-icons/react';
 import Image from 'next/image';
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
 		<>
 			<Sidebar />
 			<Main>
-				<VStack className='gap-y-0 md:gap-y-6' alignItems='stretch'>
+				<VStack gapY={{ base: '0px', md: '24px' }} alignItems='stretch'>
 					<PageHeader
 						left={
 							<Image
@@ -31,13 +31,7 @@ export default function Home() {
 							</Button>
 						}
 					>
-						<Menu>
-							<HStack className='text-sm'>
-								Sort by:{' '}
-								<div className='font-bold'>Most Upvotes</div>{' '}
-								<CaretDown weight='bold' />
-							</HStack>
-						</Menu>
+						<FilterMenu />
 					</PageHeader>
 					<VStack
 						gapY={'20px'}
