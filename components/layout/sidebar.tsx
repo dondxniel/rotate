@@ -44,11 +44,11 @@ export default function Sidebar() {
 
 			<div
 				className={`absolute ${
-					showNav ? 'left-0' : 'left-full hidden md:flex'
-				} top-full right-0 bottom-0 z-10 h-screen md:h-auto md:static flex-[2] lg:flex-none bg-black/20 md:bg-transparent`}
+					showNav ? 'left-[0%]' : 'left-full hidden md:flex'
+				} top-full right-0 bottom-0 z-10 h-screen md:h-auto md:static flex-[2.8] lg:flex-none bg-black/20 md:bg-transparent transition-all duration-200`}
 				onClick={toggleNav}
 			>
-				<div className='bg-[#F7F8FD] md:bg-transparent h-screen md:h-auto md:static flex flex-col md:flex-row lg:flex-col gap-6 items-stretch p-6 md:p-0 w-3/4 ml-auto md:w-auto md:ml-0'>
+				<div className='bg-[#F7F8FD] md:bg-transparent h-screen md:h-auto md:static flex flex-col md:flex-row lg:flex-col gap-6 items-stretch p-6 md:p-0 w-3/4 md:w-full ml-auto md:ml-0'>
 					<HStack className='flex-none md:flex-1 flex lg:flex-none bg-white rounded-[10px] p-[24px]'>
 						<HStack
 							justifyContent={'start'}
