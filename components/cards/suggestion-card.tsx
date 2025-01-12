@@ -45,6 +45,7 @@ export default function SuggestionCard() {
 						_dark: '#bbb',
 					}}
 					className='font-bold text-lg group-hover:text-[#4661E6]'
+					transition='color 300ms ease-in-out'
 				>
 					Add tags for solutions
 				</Text>
