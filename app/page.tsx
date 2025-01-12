@@ -1,8 +1,8 @@
 'use client';
-import SuggestionCard from '@/components/cards/suggestion-card';
 import Main from '@/components/layout/main';
 import PageHeader from '@/components/layout/page-header';
 import Sidebar from '@/components/layout/sidebar';
+import SuggestionsList from '@/components/lists/suggestions-list';
 import { Button } from '@/components/ui/button';
 import FilterMenu from '@/components/utilities/filter-menu';
 import { VStack } from '@chakra-ui/react';
@@ -33,16 +33,7 @@ export default function Home() {
 					>
 						<FilterMenu />
 					</PageHeader>
-					<VStack
-						gapY={'20px'}
-						alignItems='stretch'
-						className='p-8 md:p-0'
-					>
-						<SuggestionCard />
-						<SuggestionCard />
-						<SuggestionCard />
-						<SuggestionCard />
-					</VStack>
+					<SuggestionsList />
 				</VStack>
 			</Main>
 		</>

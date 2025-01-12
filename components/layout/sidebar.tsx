@@ -59,7 +59,12 @@ export default function Sidebar() {
 						_dark: '#000',
 						md: 'transparent',
 					}}
-					className='h-screen md:h-auto md:static flex flex-col md:flex-row lg:flex-col gap-6 items-stretch p-6 md:p-0 w-3/4 md:w-full ml-auto md:ml-0'
+					width={{
+						base: showNav ? '75%' : '0%',
+						md: '100%',
+					}}
+					transition='width 300ms ease-in-out'
+					className='h-screen md:h-auto md:static flex flex-col md:flex-row lg:flex-col gap-6 items-stretch p-6 md:p-0 ml-auto md:ml-0'
 				>
 					<HStack
 						className='flex-none md:flex-1 flex lg:flex-none rounded-[10px] p-[24px]'
