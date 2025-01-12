@@ -7,6 +7,7 @@ import {
 	MenuRootProps,
 	Portal,
 } from '@chakra-ui/react';
+import { Check } from '@phosphor-icons/react';
 import * as React from 'react';
 import { LuCheck, LuChevronRight } from 'react-icons/lu';
 
@@ -20,6 +21,10 @@ interface IMenuProps extends MenuRootProps {
 		label: string;
 		value: string | number;
 	}[];
+	selected?: {
+		label: string;
+		value: string;
+	};
 }
 
 export const MenuContent = React.forwardRef<HTMLDivElement, MenuContentProps>(
@@ -122,7 +127,12 @@ export const MenuItemText = ChakraMenu.ItemText;
 export const MenuItemCommand = ChakraMenu.ItemCommand;
 export const MenuTrigger = ChakraMenu.Trigger;
 
-export default function Menu({ children, options = [], ...props }: IMenuProps) {
+export default function Menu({
+	children,
+	selected,
+	options = [],
+	...props
+}: IMenuProps) {
 	return (
 		<MenuRoot {...props}>
 			<MenuTrigger asChild>
@@ -138,10 +148,17 @@ export default function Menu({ children, options = [], ...props }: IMenuProps) {
 							i !== options.length - 1
 								? 'border-b border-b-[#3A4374]/15'
 								: ''
+						} ${
+							selected?.value === option?.value
+								? 'text-[#AD1FEA]'
+								: ''
 						} py-3 hover:bg-inherit cursor-pointer hover:text-[#AD1FEA]`}
 						value={`${option.value}`}
 					>
 						{option.label}
+						{selected?.value === option?.value && (
+							<Check className='ml-auto' />
+						)}
 					</MenuItem>
 				))}
 			</MenuContent>

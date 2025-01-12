@@ -5,11 +5,17 @@ import { CaretUp, ChatCircle } from '@phosphor-icons/react';
 export default function SuggestionCard() {
 	return (
 		<HStack
+			data-state='open'
+			_open={{
+				animation: 'fade-in 300ms ease-out',
+				transitionDelay: '1000ms',
+			}}
 			alignItems={'stretch'}
 			p='32px'
 			gapX={'40px'}
 			borderRadius={'10px'}
 			bg='white'
+			className='group'
 		>
 			<VStack className='!hidden md:!flex'>
 				<VStack
@@ -19,13 +25,15 @@ export default function SuggestionCard() {
 					p='8px'
 					fontSize='sm'
 					fontWeight={'bold'}
+					_hover={{ background: '#CFD7FF' }}
+					className={`transition-all duration-300 cursor-pointer`}
 				>
 					<CaretUp weight='bold' color='#4661E6' />
 					112
 				</VStack>
 			</VStack>
 			<VStack flex={1} alignItems={'start'} gap={0}>
-				<div className='font-bold text-lg text-[#3A4374]'>
+				<div className='font-bold text-lg text-[#3A4374] group-hover:text-[#4661E6]'>
 					Add tags for solutions
 				</div>
 				<div className='text-[#647196]'>
@@ -45,6 +53,8 @@ export default function SuggestionCard() {
 						p='8px'
 						fontSize='sm'
 						fontWeight={'bold'}
+						_hover={{ background: '#CFD7FF' }}
+						className={`transition-all duration-300 cursor-pointer`}
 					>
 						<CaretUp weight='bold' color='#4661E6' />
 						112

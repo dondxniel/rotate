@@ -4,7 +4,7 @@ interface IBadge extends BadgeProps {
 	active?: boolean;
 }
 
-export default function Badge({ active, ...props }: IBadge) {
+export default function Badge({ active, className, ...props }: IBadge) {
 	return (
 		<ChakraBadge
 			background={active ? '#4661E6' : '#F2F4FF'}
@@ -14,6 +14,8 @@ export default function Badge({ active, ...props }: IBadge) {
 			fontWeight={'semibold'}
 			fontSize={'13px'}
 			borderRadius={'10px'}
+			_hover={{ background: '#CFD7FF' }}
+			className={`transition-all duration-300 cursor-pointer ${className}`}
 			{...props}
 		/>
 	);

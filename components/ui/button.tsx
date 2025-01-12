@@ -27,6 +27,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 				h={{ base: '35px', md: '44px' }}
 				borderRadius={'10px'}
 				disabled={loading || disabled}
+				transition={'all 200ms ease-in-out'}
+				_hover={{ opacity: '0.75' }}
 				ref={ref}
 				{...rest}
 			>

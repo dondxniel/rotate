@@ -17,8 +17,16 @@ export default function FilterMenu() {
 		setSelected(options.find((opt) => opt.value === v));
 	}
 	return (
-		<Menu options={options} onSelect={(v) => handleSelect(v.value)}>
-			<HStack className='text-sm'>
+		<Menu
+			options={options}
+			onSelect={(v) => handleSelect(v.value)}
+			selected={selected}
+		>
+			<HStack
+				className='text-sm'
+				transition='opacity 200ms ease-in-out'
+				_hover={{ opacity: 0.4 }}
+			>
 				Sort by: <div className='font-bold'>{selected?.label}</div>{' '}
 				<CaretDown weight='bold' />
 			</HStack>
