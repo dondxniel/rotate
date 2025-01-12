@@ -1,4 +1,5 @@
 import { Provider } from '@/components/ui/provider';
+import { Box } from '@chakra-ui/react';
 import type { Metadata } from 'next';
 import { Jost } from 'next/font/google';
 import './globals.css';
@@ -23,12 +24,17 @@ export default function RootLayout({
 		<html lang='en' suppressHydrationWarning>
 			<body className={`${jost.variable} antialiased light`}>
 				<Provider>
-					<div
-						id='pageLayout'
-						className='flex flex-col lg:flex-row md:gap-[30px] page-layout'
+					<Box
+						className='w-full'
+						bg={{ base: '#F7F8FD', _dark: '#000' }}
 					>
-						{children}
-					</div>
+						<div
+							id='pageLayout'
+							className='flex flex-col lg:flex-row md:gap-[30px] page-layout'
+						>
+							{children}
+						</div>
+					</Box>
 				</Provider>
 			</body>
 		</html>

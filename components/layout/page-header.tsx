@@ -1,3 +1,4 @@
+import { ColorModeButton } from '@/components/ui/color-mode';
 import { HStack } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
@@ -27,6 +28,7 @@ export default function PageHeader({
 				<div className='font-bold text-lg hidden md:block'>{title}</div>
 				<div className='md:px-5'>{children}</div>
 			</HStack>
+			<ColorModeButton />
 			{right}
 		</HStack>
 	);

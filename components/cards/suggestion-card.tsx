@@ -1,8 +1,10 @@
 import Badge from '@/components/ui/badge';
-import { HStack, VStack } from '@chakra-ui/react';
+import { HStack, Text, VStack } from '@chakra-ui/react';
 import { CaretUp, ChatCircle } from '@phosphor-icons/react';
+import { useTheme } from 'next-themes';
 
 export default function SuggestionCard() {
+	const { theme } = useTheme();
 	return (
 		<HStack
 			data-state='open'
@@ -14,31 +16,41 @@ export default function SuggestionCard() {
 			p='32px'
 			gapX={'40px'}
 			borderRadius={'10px'}
-			bg='white'
-			className='group'
+			bg={{ base: '#fff', _dark: '#333' }}
+			className='group cursor-pointer'
 		>
 			<VStack className='!hidden md:!flex'>
 				<VStack
 					width={'40px'}
-					bg='#F2F4FE'
+					bg={{ base: '#F2F4FE', _dark: '#4661E6' }}
 					borderRadius={'10px'}
 					p='8px'
 					fontSize='sm'
 					fontWeight={'bold'}
 					_hover={{ background: '#CFD7FF' }}
+					color={{ _dark: 'white' }}
 					className={`transition-all duration-300 cursor-pointer`}
 				>
-					<CaretUp weight='bold' color='#4661E6' />
+					<CaretUp
+						weight='bold'
+						color={theme === 'light' ? '#4661E6' : '#fff'}
+					/>
 					112
 				</VStack>
 			</VStack>
 			<VStack flex={1} alignItems={'start'} gap={0}>
-				<div className='font-bold text-lg text-[#3A4374] group-hover:text-[#4661E6]'>
+				<Text
+					color={{
+						base: '#3A4374',
+						_dark: '#bbb',
+					}}
+					className='font-bold text-lg group-hover:text-[#4661E6]'
+				>
 					Add tags for solutions
-				</div>
-				<div className='text-[#647196]'>
+				</Text>
+				<Text color={{ base: '#647196', _dark: '#a6b0cd' }}>
 					Easier to search for solutions based on a specific stack.{' '}
-				</div>
+				</Text>
 				<HStack flexWrap={'wrap'} gapX={'8px'} mt='5'>
 					<Badge>Enhancement</Badge>
 				</HStack>
@@ -48,24 +60,28 @@ export default function SuggestionCard() {
 					className='!flex md:!hidden w-full'
 				>
 					<HStack
-						bg='#F2F4FE'
+						bg={{ base: '#F2F4FE', _dark: '#4661E6' }}
 						borderRadius={'10px'}
 						p='8px'
 						fontSize='sm'
 						fontWeight={'bold'}
 						_hover={{ background: '#CFD7FF' }}
+						color={{ _dark: 'white' }}
 						className={`transition-all duration-300 cursor-pointer`}
 					>
-						<CaretUp weight='bold' color='#4661E6' />
+						<CaretUp
+							weight='bold'
+							color={theme === 'light' ? '#4661E6' : '#fff'}
+						/>
 						112
 					</HStack>
-					<HStack>
+					<HStack color={{ _dark: '#647196' }}>
 						<ChatCircle weight='fill' color='#CDD2EE' /> 2
 					</HStack>
 				</HStack>
 			</VStack>
 			<VStack justifyContent={'center'} className='!hidden md:!flex'>
-				<HStack>
+				<HStack color={{ _dark: '#647196' }}>
 					<ChatCircle weight='fill' color='#CDD2EE' /> 2
 				</HStack>
 			</VStack>

@@ -1,5 +1,5 @@
 import Badge from '@/components/ui/badge';
-import { Button, HStack, VStack } from '@chakra-ui/react';
+import { Box, Button, HStack, Text, VStack } from '@chakra-ui/react';
 import { List, X } from '@phosphor-icons/react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -42,14 +42,29 @@ export default function Sidebar() {
 				</Button>
 			</HStack>
 
-			<div
+			<Box
 				className={`absolute ${
 					showNav ? 'left-[0%]' : 'left-full hidden md:flex'
-				} top-full right-0 bottom-0 z-10 h-screen md:h-auto md:static flex-[2.8] lg:flex-none bg-black/20 md:bg-transparent transition-all duration-200`}
+				} top-full right-0 bottom-0 z-10 h-screen md:h-auto md:static flex-[2.8] lg:flex-none transition-all duration-200`}
+				bg={{
+					base: 'rgba(0,0,0,0.2)',
+					_dark: 'rgba(255,255,255,0.3)',
+					md: 'transparent',
+				}}
 				onClick={toggleNav}
 			>
-				<div className='bg-[#F7F8FD] md:bg-transparent h-screen md:h-auto md:static flex flex-col md:flex-row lg:flex-col gap-6 items-stretch p-6 md:p-0 w-3/4 md:w-full ml-auto md:ml-0'>
-					<HStack className='flex-none md:flex-1 flex lg:flex-none bg-white rounded-[10px] p-[24px]'>
+				<Box
+					bg={{
+						base: '#F7F8FD',
+						_dark: '#000',
+						md: 'transparent',
+					}}
+					className='h-screen md:h-auto md:static flex flex-col md:flex-row lg:flex-col gap-6 items-stretch p-6 md:p-0 w-3/4 md:w-full ml-auto md:ml-0'
+				>
+					<HStack
+						className='flex-none md:flex-1 flex lg:flex-none rounded-[10px] p-[24px]'
+						bg={{ base: '#fff', _dark: '#333' }}
+					>
 						<HStack
 							justifyContent={'start'}
 							alignItems={'start'}
@@ -69,25 +84,56 @@ export default function Sidebar() {
 					<VStack
 						alignItems={'stretch'}
 						gapY={'2'}
-						className='flex-none md:flex-1 flex lg:flex-none bg-white rounded-[10px] p-[24px]'
+						className='flex-none md:flex-1 flex lg:flex-none rounded-[10px] p-[24px]'
+						bg={{ base: '#fff', _dark: '#333' }}
 					>
 						<HStack justifyContent={'space-between'}>
-							<div className='text-lg font-bold text-[#3A4374] flex-1'>
+							<Text
+								color={{ base: '#3A4374', _dark: '#87CEEB' }}
+								className='text-lg font-bold  flex-1'
+							>
 								Roadmap
-							</div>
+							</Text>
 							<div>
-								<Link href='#'>View</Link>
+								<Link href='#' className='text-sm'>
+									<Text
+										color={{
+											base: '#4661E6',
+											_dark: '#ADD8E6',
+										}}
+										_hover={{
+											color: {
+												base: '#4661E6',
+												_dark: '#4661E6',
+											},
+										}}
+									>
+										View
+									</Text>
+								</Link>
 							</div>
 						</HStack>
-						<HStack
-							justifyContent={'space-between'}
-							className='text-gray-500'
-						>
+						<HStack justifyContent={'space-between'}>
 							<HStack gapX={'2'} flex={1}>
 								<div className='bg-[#F49F85] h-2 w-2 rounded-full' />
-								<div>Planned</div>
+								<Text
+									color={{
+										base: '#6b7280',
+										_dark: '#d1d5db',
+									}}
+								>
+									Planned
+								</Text>
 							</HStack>
-							<div className='font-bold'>2</div>
+							<Text
+								color={{
+									base: '#6b7280',
+									_dark: '#d1d5db',
+								}}
+								className='font-bold'
+							>
+								2
+							</Text>
 						</HStack>
 						<HStack
 							justifyContent={'space-between'}
@@ -95,9 +141,24 @@ export default function Sidebar() {
 						>
 							<HStack gapX={'2'} flex={1}>
 								<div className='bg-[#AD1FEA] h-2 w-2 rounded-full' />
-								<div>In-Progress</div>
+								<Text
+									color={{
+										base: '#6b7280',
+										_dark: '#d1d5db',
+									}}
+								>
+									In-Progress
+								</Text>
 							</HStack>
-							<div className='font-bold'>3</div>
+							<Text
+								color={{
+									base: '#6b7280',
+									_dark: '#d1d5db',
+								}}
+								className='font-bold'
+							>
+								3
+							</Text>
 						</HStack>
 						<HStack
 							justifyContent={'space-between'}
@@ -105,13 +166,28 @@ export default function Sidebar() {
 						>
 							<HStack gapX={'2'} flex={1}>
 								<div className='bg-[#62BCFA] h-2 w-2 rounded-full' />
-								<div>Live</div>
+								<Text
+									color={{
+										base: '#6b7280',
+										_dark: '#d1d5db',
+									}}
+								>
+									Live
+								</Text>
 							</HStack>
-							<div className='font-bold'>1</div>
+							<Text
+								color={{
+									base: '#6b7280',
+									_dark: '#d1d5db',
+								}}
+								className='font-bold'
+							>
+								1
+							</Text>
 						</HStack>
 					</VStack>
-				</div>
-			</div>
+				</Box>
+			</Box>
 		</div>
 	);
 }

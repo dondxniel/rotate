@@ -27,7 +27,8 @@ export default function FilterMenu() {
 				transition='opacity 200ms ease-in-out'
 				_hover={{ opacity: 0.4 }}
 			>
-				Sort by: <div className='font-bold'>{selected?.label}</div>{' '}
+				<span className='hidden md:block'>Sort by: </span>
+				<div className='font-bold'>{selected?.label}</div>{' '}
 				<CaretDown weight='bold' />
 			</HStack>
 		</Menu>
