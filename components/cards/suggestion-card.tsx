@@ -42,9 +42,13 @@ export default function SuggestionCard() {
 				<Text
 					color={{
 						base: '#3A4374',
-						_dark: '#bbb',
+						_dark: '#fff',
 					}}
-					className='font-bold text-lg group-hover:text-[#4661E6]'
+					className={`font-bold text-lg ${
+						theme === 'light'
+							? 'group-hover:text-[#4661E6]'
+							: 'group-hover:text-[#afbcff]'
+					}`}
 					transition='color 300ms ease-in-out'
 				>
 					Add tags for solutions
@@ -76,13 +80,13 @@ export default function SuggestionCard() {
 						/>
 						112
 					</HStack>
-					<HStack color={{ _dark: '#647196' }}>
+					<HStack color={{ _dark: '#fff' }}>
 						<ChatCircle weight='fill' color='#CDD2EE' /> 2
 					</HStack>
 				</HStack>
 			</VStack>
 			<VStack justifyContent={'center'} className='!hidden md:!flex'>
-				<HStack color={{ _dark: '#647196' }}>
+				<HStack color={{ _dark: '#fff' }}>
 					<ChatCircle weight='fill' color='#CDD2EE' /> 2
 				</HStack>
 			</VStack>
